@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+
+<div class="creater">
+    <hr>
+    <form class="formulario" method="post" action="/store" enctype="multipart/form-data">
+          <p>Ingresar Empleados</p>
+        <div class="card-body">
+            <div class="card-text">
+    
+                <div class="form-group">
+                    <label for="txtNombre">Nombre</label>
+                    <input class="form-control" type="text" name="txtNombre" id="txtNombre" placeholder="Nombre..." required>
+                </div>
+                 <div class="form-group">
+                     <label for="txtCorreo">Correo</label>
+                      <input class="form-control" type="email" name="txtCorreo" id="txtCorreo" placeholder="Correo..." required>
+                 </div>
+                 <div class="form-group">
+                     <label for="txtFoto">Foto</label>
+                     <input class="form-control" type="file" name="txtFoto" id="txtFoto" required>
+                 </div>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Agregar">
+                    |
+                    <a class="btn btn-warning" href="{{ url_for('index') }}">Regresar</a>
+                </div>
+            </div>
+        </div>
+    
+    </form>
+</div>
+<script>
+    
+</script>
+{% include 'footer.html' %}

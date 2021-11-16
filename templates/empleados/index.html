@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+<section class="main">
+    <br>
+    
+    <a class="btn btn-success crear" href="{{ url_for('create') }}">Create</a>
+    <hr>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in empleados %}
+            <tr>
+                <td> {{ registro[0] }} </td>
+                
+                <td>
+                    <img class="img-thumbnail" width="100" src="{{ url_for('uploads', nombreFoto=registro[3]) }}" alt="fotos">
+                    
+                </td>
+                
+                <td> {{ registro[1] }} </td>
+                <td> {{ registro[2] }} </td>
+                
+                <td>
+                    <a class="btn btn-success" href="/edit/{{ registro[0] }}">Editar</a>
+                    |
+                    <a class="btn btn-danger" href="/destroy/{{ registro[0] }}" onclick="return confirmDelete()">Borrar</a>
+                </td>
+                
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+    <script>
+        const confirmDelete = () =>{
+            let respuesta = confirm("Estas seguro que deseas borrar este campo?");
+            if (respuesta == true){
+                return true;
+            } else{
+                return false;
+            }
+
+        }
+
+    </script>
+  {% include 'footer.html' %}

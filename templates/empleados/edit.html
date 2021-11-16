@@ -1,0 +1,29 @@
+{% include 'header.html' %}
+
+{% for item in empleados %}
+<div class="creater">
+    
+    <form class="formulario" method="post" action="/update" enctype="multipart/form-data">
+        <input class="form-control txtid" type="text" value="{{ item[0] }}" name="txtId" id="txtId">
+        <p>Formulario a editar(id:{{ item[0] }})</p>
+        <div class="form-group">
+            <label for="txtNombre">Nuevo Nombre</label>
+            <input class="form-control" type="text" value="{{ item[1] }}" name="txtNombre" id="txtNombre">
+        </div>
+        <div class="form-group">
+            <label for="txtNombre">Nuevo Correo</label>
+            <input class="form-control" type="email" value="{{ item[2] }}" name="txtCorreo" id="txtCorreo">
+        </div>
+        <div class="form-group">
+            <label for="txtNombre">Nueva Foto</label>
+            <img class="img-thumbnail" width="100" src="{{ url_for('uploads', nombreFoto=item[3]) }}" alt="fotos">
+            <input class="form-control" type="file"  name="txtFoto" id="txtFoto">
+        </div>
+        
+        <input class="btn btn-success" type="submit" value="Agregar">
+        <a class="btn btn-warning" href="{{ url_for('index') }}">Regresar</a>
+    </form>
+</div>
+
+{% endfor %}
+{% include 'footer.html' %}
